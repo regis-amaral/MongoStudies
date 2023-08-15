@@ -1,0 +1,82 @@
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      'menus'
+    ],
+    properties: {
+      menus: {
+        bsonType: 'array',
+        minimum: 1,
+        items: {
+          bsonType: 'object',
+          required: [
+            'code',
+            'name',
+            'products'
+          ],
+          properties: {
+            code: {
+              bsonType: 'string',
+              minimum: 1
+            },
+            name: {
+              bsonType: 'string'
+            },
+            description: {
+              bsonType: 'string'
+            },
+            produtos: {
+              bsonType: 'array',
+              items: {
+                bsonType: 'object',
+                required: [
+                  'code',
+                  'name',
+                  'price',
+                  'preparationTime',
+                  'productType',
+                  'hasActive'
+                ],
+                properties: {
+                  code: {
+                    bsonType: 'string',
+                    description: 'O campo código é obrigatório'
+                  },
+                  name: {
+                    bsonType: 'string',
+                    description: 'O campo nome é obrigatório'
+                  },
+                  price: {
+                    bsonType: 'double',
+                    minimum: 0,
+                    description: 'O campo preço é obrigatório'
+                  },
+                  preparationTime: {
+                    bsonType: 'int',
+                    description: 'O campo tempo de preparação é obrigatório'
+                  },
+                  productType: {
+                    'enum': [
+                      'DRINK',
+                      'FOOD',
+                      'DESSERT'
+                    ],
+                    description: 'O campo tipo do produto é obrigatório'
+                  },
+                  comments: {
+                    bsonType: 'string'
+                  },
+                  hasActive: {
+                    bsonType: 'bool',
+                    description: 'O campo produto ativo é obrigatório'
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
