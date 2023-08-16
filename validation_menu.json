@@ -1,0 +1,70 @@
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      'code',
+      'name',
+      'description',
+      'products'
+    ],
+    properties: {
+      code: {
+        bsonType: 'string',
+        description: 'O campo código é obrigatório'
+      },
+      name: {
+        bsonType: 'string',
+        description: 'O campo nome é obrigatório'
+      },
+      description: {
+        bsonType: 'string'
+      },
+      products: {
+        bsonType: 'array',
+        items: {
+          bsonType: 'object',
+          minItems: 1,
+          required: [
+            'code',
+            'name',
+            'price',
+            'preparationTime',
+            'productType',
+            'hasActive'
+          ],
+          properties: {
+            code: {
+              bsonType: 'string',
+              description: 'O campo código é obrigatório'
+            },
+            name: {
+              bsonType: 'string',
+              description: 'O campo nome é obrigatório'
+            },
+            price: {
+              bsonType: [
+                'double',
+                'int'
+              ],
+              minimum: 0,
+              description: 'O campo preço é obrigatório'
+            },
+            preparationTime: {
+              bsonType: 'string',
+              minimum: 0,
+              description: 'O campo tempo de preparo é obrigatório'
+            },
+            productType: {
+              bsonType: 'string',
+              description: 'O campo tipo de produto é obrigatório'
+            },
+            hasActive: {
+              bsonType: 'bool',
+              description: 'O campo status é obrigatório'
+            }
+          }
+        }
+      }
+    }
+  }
+}

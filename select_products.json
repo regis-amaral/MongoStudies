@@ -1,0 +1,11 @@
+db.menus.aggregate([
+    {
+        $unwind: "$products"
+    },
+    {
+        $match: {"products.productType": "DRINK"}
+    },
+    {
+        $project: {_id: 0, product: "$products"}
+    }
+    ])
